@@ -13,11 +13,14 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0'
+version = '0.1.0'
 group = 'com.minori.mymod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'mymod'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8 // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
