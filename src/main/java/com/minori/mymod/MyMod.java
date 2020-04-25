@@ -2,6 +2,10 @@ package com.minori.mymod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,9 +17,11 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ObjectHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -24,6 +30,8 @@ public class MyMod
 {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
+
+    public static final Block TestBlock = new Block(Block.Properties.create(Material.ROCK).lightValue(-1)).setRegistryName("mymod", "test");
 
     public MyMod() {
         // Register the setup method for modloading
@@ -76,9 +84,19 @@ public class MyMod
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+        public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
+            event.getRegistry().registerAll(TestBlock);
+        }
+
+        @SubscribeEvent
+        public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
+            // register a new block here
+            LOGGER.info("HELLO from Register Item");
+            event.getRegistry().registerAll(new BlockItem(TestBlock, new BlockItem.Properties()).setRegistryName(TestBlock.getRegistryName()));
         }
     }
+
+
 }
