@@ -31,7 +31,9 @@ public class MyMod
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final Block TestBlock = new Block(Block.Properties.create(Material.ROCK).lightValue(-1)).setRegistryName("mymod", "test");
+    public static final Block testBlock = new Block(Block.Properties.create(Material.ROCK).lightValue(-15)).setRegistryName("mymod", "test_block");
+
+    public static final Item testBlockItem = new BlockItem(testBlock, new BlockItem.Properties()).setRegistryName(Objects.requireNonNull(testBlock.getRegistryName()));
 
     public MyMod() {
         // Register the setup method for modloading
@@ -87,14 +89,14 @@ public class MyMod
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
-            event.getRegistry().registerAll(TestBlock);
+            event.getRegistry().registerAll(testBlock);
         }
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
             // register a new block here
             LOGGER.info("HELLO from Register Item");
-            event.getRegistry().registerAll(new BlockItem(TestBlock, new BlockItem.Properties()).setRegistryName(TestBlock.getRegistryName()));
+            event.getRegistry().registerAll(testBlockItem);
         }
     }
 
