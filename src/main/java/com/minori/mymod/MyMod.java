@@ -2,6 +2,7 @@ package com.minori.mymod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
@@ -31,7 +32,7 @@ public class MyMod
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final Block testBlock = new Block(Block.Properties.create(Material.ROCK).lightValue(-15)).setRegistryName("mymod", "test_block");
+    public static final Block testBlock = new Block(Block.Properties.create(Material.ROCK).lightValue(200).sound(SoundType.WOOD)).setRegistryName("mymod", "test_block");
 
     public static final Item testBlockItem = new BlockItem(testBlock, new BlockItem.Properties()).setRegistryName(Objects.requireNonNull(testBlock.getRegistryName()));
 

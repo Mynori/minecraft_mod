@@ -1,6 +1,6 @@
 {
-  "parent": "block/cube_all",
+  "parent": "item/generated",
   "textures": {
-    "all": "mymod:block/test_block"
+    "layer0": "mymod:item/test_block"
   }
 }
