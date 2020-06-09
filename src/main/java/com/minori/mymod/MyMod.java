@@ -5,9 +5,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -34,7 +34,9 @@ public class MyMod
 
     public static final Block testBlock = new Block(Block.Properties.create(Material.ROCK).lightValue(200).sound(SoundType.WOOD)).setRegistryName("mymod", "test_block");
 
-    public static final Item testBlockItem = new BlockItem(testBlock, new BlockItem.Properties()).setRegistryName(Objects.requireNonNull(testBlock.getRegistryName()));
+    public static final Item testBlockItem = new BlockItem(testBlock, (new BlockItem.Properties()).group(ItemGroup.DECORATIONS)).setRegistryName(Objects.requireNonNull(testBlock.getRegistryName()));
+
+    public static final Item testItem = new Item(new Item.Properties().food((new Food.Builder()).fastToEat().setAlwaysEdible().hunger(12).build()).group(ItemGroup.COMBAT).defaultMaxDamage(300).maxDamage(300).setNoRepair().rarity(Rarity.EPIC)).setRegistryName("mymod", "test_item");
 
     public MyMod() {
         // Register the setup method for modloading
@@ -97,7 +99,7 @@ public class MyMod
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
             // register a new block here
             LOGGER.info("HELLO from Register Item");
-            event.getRegistry().registerAll(testBlockItem);
+            event.getRegistry().registerAll(testBlockItem, testItem);
         }
     }
 
