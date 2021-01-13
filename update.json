@@ -1,10 +1,10 @@
 {
     "homepage": "https://github.com/Mynori/minecraft_mod",
-    "1.15.2": {
+    "1.16.4": {
       "0.1.0": "First version of this mod. Donno where it gonna take me."
     },
     "promos": {
-      "1.15.2-latest": "0.1.0",
-      "1.15.2-recommended": "0.1.0"
+      "1.16.4-latest": "0.1.0",
+      "1.16.4-recommended": "0.1.0"
     }
   }

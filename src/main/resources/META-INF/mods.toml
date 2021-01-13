@@ -1,19 +1,18 @@
 modLoader="javafml"
 
-loaderVersion="[31,)"
+loaderVersion="[35,)"
+
+license="All rights reserved"
 
 #issueTrackerURL="http://my.issue.tracker/"
-updateJSONURL="https://github.com/Mynori/minecraft_mod/blob/master/update.json"
 
-showAsResourcePack=false
-
-# Mod
 [[mods]]
 
 modId="mymod"
 version="${file.jarVersion}"
 displayName="My Mod"
-
+updateJSONURL="https://github.com/Mynori/minecraft_mod/blob/master/update.json"
+#displayURL="http://example.com/"
 logoFile="mymod.png"
 
 credits="This is my credit"
@@ -22,18 +21,17 @@ description='''
 This is my description
 '''
 
-# Dependencies
-[[dependencies.mymod]]
 
+[[dependencies.mymod]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[35,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.mymod]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.4,1.17)"
     ordering="NONE"
     side="BOTH"
